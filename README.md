@@ -6,7 +6,7 @@ Tests on cypress for https://the-internet.herokuapp.com/
 
 ## Usage
 Install the npm package with the command:
-
+```
 $ npm install
 ```
 
@@ -14,6 +14,6 @@ $ npm install
 To install and run the project, you need [NodeJS](https://nodejs.org/) v8+.
 
 ## Testing
-
+```
 npm run test
 ```
