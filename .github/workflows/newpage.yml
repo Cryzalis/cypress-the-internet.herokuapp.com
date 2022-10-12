@@ -2,7 +2,8 @@ name: Main Github Actions
 on:
   push:
     branches:
-      - 'gh-page' # Set branch of the GH repo to push
+      - 'master' # Set branch of the GH repo to push
+      
 jobs:
   test_suite: # Name of the job
       runs-on: ubuntu-20.04 # Choosing OS
@@ -11,6 +12,16 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           node-version: '16' # In command line run “node -v” and choose your version
+      - run: npm ci
+#      - run: npm config set script-shell "C:\Program Files\Git\bin\bash.exe"
+      - name: run test
+        run: npm run test:headless # Our name of the headless script
+      - name: Copy History
+        if: always()
+        run: cp -r $(pwd)/docs/history/. $(pwd)/allure-results/history
+      - name: Generate Report
+        if: always()
+        run: npm run allure:report # Name of the allure generate script
       - name: Upload Results
         uses: actions/upload-artifact@v1
         if: always()
@@ -37,7 +48,7 @@ jobs:
           API_TOKEN_GITHUB: ${{ 'YOUR TOKEN' }} # Instruction where to get token is below
         with:
           source-directory: 'docs'
-          destination-github-username: 'Cryzalis' # Your username
-          destination-repository-name: 'cypress-the-internet.herokuapp.com' # Name of your repo
-          user-email: dmytromaslo@gmail.com # Your email
+          destination-github-username: 'username' # Your username
+          destination-repository-name: 'reponame' # Name of your repo
+          user-email: user@gmail.com # Your email
           target-branch: main 
