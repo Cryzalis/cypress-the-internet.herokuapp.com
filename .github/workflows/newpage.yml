@@ -2,7 +2,7 @@ name: Main Github Actions
 on:
   push:
     branches:
-      - 'master' # Set branch of the GH repo to push try to deploy
+      - 'gh-page' # Set branch of the GH repo to push try to deploy
 
 jobs:
   test_suite: # Name of the job
