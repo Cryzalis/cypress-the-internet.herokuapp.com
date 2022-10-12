@@ -2,7 +2,7 @@ name: Main Github Actions
 on:
   push:
     branches:
-      - 'master' # Set branch of the GH repo to push
+      - 'gh-page' # Set branch of the GH repo to push
 jobs:
   test_suite: # Name of the job
       runs-on: ubuntu-20.04 # Choosing OS
